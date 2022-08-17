@@ -5,7 +5,7 @@ import { Context } from "../store/appContext";
 
 export const CardVehicle = (props) => {
   const { store, actions } = useContext(Context);
-  console.log("salida de props", props);
+  //console.log("salida de props", props);
 
   const sendName=()=>{
     let nameItem = props.data.name
