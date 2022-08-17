@@ -1,0 +1,7 @@
+body{
+    background-image: url("C:\Users\valdi\OneDrive\Escritorio\Codes\exercise-starwars-blog-reading-list\my-react-app\src\img\stars.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}

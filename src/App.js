@@ -1,38 +1,36 @@
-import React, {useState, useEffect} from 'react';
-import Navbar from './components/Navbar';
-import './App.css';
+
+import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Container} from 'semantic-ui-react'
+import Home from "./js/views/Home";
+import People from "./js/views/People";
+import Planets from "./js/views/Planets";
+import Vehicles from "./js/views/Vehicles";
+import Navbar from "./js/components/Navbar";
+import injectContext from "./js/store/appContext";
+
+
 
 
 function App() {
-const [people, setPeople] = useState([]);
-const [planets, setPlanets] = useState([]);
-const [loading, setLoading]= useState(true);
-
-useEffect(()=>{
-  async function fetchPeople(){
-    let res = await fetch('https://www.swapi.tech/api/people/');
-    let data = await res.json();
-    setPeople(data.results);
-
-  }
-
-  async function fetchPlanets(){
-    let res = await fetch('https://www.swapi.tech/api/planets/');
-    let data = await res.json();
-    setPlanets(data.results);
-  }
-
-  fetchPeople();
-  fetchPlanets();
-}, [])
-
-
 
   return (
-    <div className="App">
-      <Navbar/>
-    </div>
+    <>
+      <Router>
+        <Navbar />
+        <Container>
+
+            <Switch>
+              <Route exact path='/'><Home /></Route>
+              <Route exact path='/people'><People component={People} /></Route>
+              <Route exact path='/planets' ><Planets component={Planets}/></Route>
+              <Route exact path='/vehicles' ><Vehicles component={Vehicles}/></Route>              
+            </Switch>            
+              
+        </Container>
+      </Router>
+    </>
   );
 }
 
-export default App;
+export default injectContext(App);
